@@ -1,0 +1,19 @@
+# see https://symfony.com/doc/current/reference/configuration/framework.html
+framework:
+    secret: '%env(APP_SECRET)%'
+    csrf_protection: false # Not needed for the cli project
+
+    # Note that the session will be started ONLY if you read or write from it.
+    session: false # Not needed for the cli project
+
+    #esi: true
+    #fragments: true
+
+    assets:
+        enabled: false  # Disable asset management
+
+when@test:
+    framework:
+        test: true
+        session:
+            storage_factory_id: session.storage.factory.mock_file

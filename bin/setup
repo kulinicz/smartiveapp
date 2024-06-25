@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -o errexit
+
+bin/docker-compose up --build -d --remove-orphans "${@:2}"
+
+bin/cli composer install

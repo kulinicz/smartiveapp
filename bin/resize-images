@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -o errexit
+
+bin/cli bin/console app:resize-images "$@"
