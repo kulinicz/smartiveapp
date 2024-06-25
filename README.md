@@ -8,7 +8,5 @@ bin/setup
 bin/resize-images samples/source samples/output
 bin/resize-images samples/source --storage=s3 --bucket=smartiveapp
 
-tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src
-
 # run phpunit tests
 ./vendor/bin/phpunit --bootstrap vendor/autoload.php src/tests
