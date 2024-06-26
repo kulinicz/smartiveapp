@@ -1,3 +1,6 @@
+Zadanie Rekrutacyjne SmartiveApp
+==============
+
 Instalacja za pomocą jednej komendy. 
 Wymagany zainstalowany docker-compose lokalnie
 Dla przetestowania opcji AWS S3 należy uzupełnić plik .env
@@ -14,4 +17,4 @@ S3
 > bin/resize-images samples/source output_dir --storage=s3
 
 run phpunit tests
-> ./vendor/bin/phpunit --bootstrap vendor/autoload.php src/tests
+> bin/cli ./vendor/bin/phpunit --bootstrap vendor/autoload.php src/tests

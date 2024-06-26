@@ -31,9 +31,6 @@ WORKDIR /var/www/html
 # Copy existing application directory contents
 COPY . /var/www/html
 
-# Install PHP dependencies
-#RUN composer install --no-interaction --optimize-autoloader
-
 # Expose port for debugging (optional)
 EXPOSE 9000
 
