@@ -41,7 +41,6 @@ class ResizeImagesCommand extends Command
         $directory = $input->getArgument('directory');
         $outputDir = $input->getArgument('output');
         $storageType = $input->getOption('storage');
-        $bucketName = $input->getOption('bucket');
 
         if (!is_dir($directory)) {
             $io->error('The specified directory does not exist.');
@@ -55,7 +54,7 @@ class ResizeImagesCommand extends Command
         $imageFiles = glob($directory . '/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
 
         foreach ($imageFiles as $file) {
-            $this->processImageFile($file, $outputDir, $storageType, $bucketName, $io);
+            $this->processImageFile($file, $outputDir, $storageType, $io);
         }
 
         $io->success('All thumbnails have been created.');
@@ -73,11 +72,11 @@ class ResizeImagesCommand extends Command
         return true;
     }
 
-    private function processImageFile(string $file, string $outputDir, string $storageType, ?string $bucketName, SymfonyStyle $io): void
+    private function processImageFile(string $file, string $outputDir, string $storageType, SymfonyStyle $io): void
     {
         try {
             $resizedContent = $this->imageResizer->resizeImage($file);
-            $this->imageSaver->saveImage($outputDir . '/' . basename($file), $resizedContent, $storageType, $bucketName);
+            $this->imageSaver->saveImage($outputDir . '/' . basename($file), $resizedContent, $storageType);
             $io->success('Created thumbnail for ' . $file);
         } catch (\Exception $e) {
             $io->error('Failed to create thumbnail for ' . $file . ': ' . $e->getMessage());

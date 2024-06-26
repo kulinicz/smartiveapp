@@ -13,9 +13,9 @@ class ImageSaver
         $this->storageHandlerFactory = $storageHandlerFactory;
     }
 
-    public function saveImage(string $path, string $content, string $storageType, ?string $bucketName = null): void
+    public function saveImage(string $path, string $content, string $storageType): void
     {
-        $storageHandler = $this->storageHandlerFactory->create($storageType, $bucketName);
+        $storageHandler = $this->storageHandlerFactory->create($storageType);
         $storageHandler->save($path, $content);
     }
 }

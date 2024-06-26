@@ -7,9 +7,11 @@ Dla przetestowania opcji AWS S3 należy uzupełnić plik .env
 W obecniej wersji są dostępne tylko katalogi w obrebie głównego katalogu
 przykłady użycia: 
 
+local source:
 > bin/resize-images samples/source samples/output
-> 
-> bin/resize-images samples/source --storage=s3 --bucket=smartiveapp
+
+S3
+> bin/resize-images samples/source output_dir --storage=s3
 
 run phpunit tests
 > ./vendor/bin/phpunit --bootstrap vendor/autoload.php src/tests

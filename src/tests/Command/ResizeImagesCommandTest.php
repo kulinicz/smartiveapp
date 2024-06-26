@@ -56,7 +56,7 @@ class ResizeImagesCommandTest extends TestCase
         $this->imageSaver
             ->expects($this->once())
             ->method('saveImage')
-            ->with($this->equalTo($outputDir . '/test.jpg'), $this->equalTo('resized_content'), $this->equalTo('local'), $this->equalTo(null));
+            ->with($this->equalTo($outputDir . '/test.jpg'), $this->equalTo('resized_content'), $this->equalTo('local'));
 
         $this->commandTester->execute([
             'directory' => $directory,

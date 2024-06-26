@@ -29,3 +29,16 @@ services:
                 credentials:
                     key: '%env(AWS_ACCESS_KEY_ID)%'
                     secret: '%env(AWS_SECRET_ACCESS_KEY)%'
+
+    SergiuszKuliniczRekrutacjaSmartiveapp\Service\Storage\StorageHandlerFactory:
+        arguments:
+            $container: '@service_container'
+
+    SergiuszKuliniczRekrutacjaSmartiveapp\Service\Storage\LocalStorageHandler:
+        public: true
+
+    SergiuszKuliniczRekrutacjaSmartiveapp\Service\Storage\S3StorageHandler:
+        arguments:
+            $bucketName: '%env(AWS_BUCKET_NAME)%'
+            $logger: '@logger'
+        public: true

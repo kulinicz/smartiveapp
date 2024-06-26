@@ -45,13 +45,12 @@ class ImageSaverTest extends TestCase
         $path = 's3/path/to/image.jpg';
         $content = 'image content';
         $storageType = 's3';
-        $bucketName = 'test-bucket';
 
         $this->storageHandlerMock
             ->expects($this->once())
             ->method('save')
             ->with($this->equalTo($path), $this->equalTo($content));
 
-        $this->imageSaver->saveImage($path, $content, $storageType, $bucketName);
+        $this->imageSaver->saveImage($path, $content, $storageType);
     }
 }
