@@ -8,6 +8,9 @@ use Imagine\Image\ImageInterface;
 
 class ImageResizer
 {
+    const MAX_WIDTH = 150;
+    const JPG_QUALITY = 90;
+
     private Imagine $imagine;
 
     public function __construct()
@@ -23,15 +26,15 @@ class ImageResizer
         $height = $size->getHeight();
 
         if ($width > $height) {
-            $newWidth = 150;
-            $newHeight = (150 / $width) * $height;
+            $newWidth = self::MAX_WIDTH;
+            $newHeight = (self::MAX_WIDTH / $width) * $height;
         } else {
-            $newHeight = 150;
-            $newWidth = (150 / $height) * $width;
+            $newHeight = self::MAX_WIDTH;
+            $newWidth = (self::MAX_WIDTH / $height) * $width;
         }
 
         $thumbnail = $image->thumbnail(new Box($newWidth, $newHeight), ImageInterface::THUMBNAIL_OUTBOUND);
 
-        return $thumbnail->get('jpg', ['jpeg_quality' => 90]);
+        return $thumbnail->get('jpg', ['jpeg_quality' => self::JPG_QUALITY]);
     }
 }
