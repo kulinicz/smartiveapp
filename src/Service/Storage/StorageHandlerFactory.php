@@ -18,12 +18,13 @@ class StorageHandlerFactory
 
     public function create(string $type): StorageHandlerInterface
     {
-        if ($type === self::TYPE_LOCAL) {
-            return $this->container->get(LocalStorageHandler::class);
-        } elseif ($type === self::TYPE_S3) {
-            return $this->container->get(S3StorageHandler::class);
-        } else {
-            throw new \InvalidArgumentException('Invalid storage type or missing bucket name.');
+        switch ($type) {
+            case self::TYPE_LOCAL:
+                return $this->container->get(LocalStorageHandler::class);
+            case self::TYPE_S3:
+                return $this->container->get(S3StorageHandler::class);
+            default:
+                throw new \InvalidArgumentException('Invalid storage type or missing bucket name.');
         }
     }
 }
